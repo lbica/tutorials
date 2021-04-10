@@ -40,8 +40,7 @@ if __name__ == '__main__':
     # ratingTotalsAndCount = movieRatings.reduceByKey(lambda movie1, movie2: (movie1[0] + movie2[0], movie1[1] + movie2[1]))
 
     # Map to (movieID, averageRating)
-    averageRatings = movieDataset.groupBy("movieID").avg("rating") \
-        .withColumnRenamed("avg(rating)", "avg_rating")
+    averageRatings = movieDataset.groupBy("movieID").avg("rating")
 
     # Computes count of ratings for each movieID: (movieID, count)
     counts = movieDataset.groupBy("movieID").count()
@@ -55,7 +54,7 @@ if __name__ == '__main__':
 
     # Pull the top 10 results
 
-    topTen = averagesAndCounts.orderBy("avg_rating").take(20)
+    topTen = averagesAndCounts.orderBy("avg(rating)").take(10)
 
     # # Print them out: convert movieID's to name as we go
     for movie in topTen:
