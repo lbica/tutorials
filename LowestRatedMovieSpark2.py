@@ -50,7 +50,7 @@ if __name__ == '__main__':
     # define condition for joining dataframes:
     cond = [averageRatings.movieID == counts.movieID]
 
-    averagesAndCounts = averageRatings.join(averageRatings, cond)
+    averagesAndCounts = averageRatings.join(averageRatings, "movieID")
 
     # Pull the top 10 results
 
