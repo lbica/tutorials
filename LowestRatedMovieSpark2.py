@@ -48,9 +48,9 @@ if __name__ == '__main__':
     # Join the two together ( We now have movieID, avg(rating) and count columns
 
     # define condition for joining dataframes:
-    cond = [averageRatings.movieID == counts.movieID]
+    # cond = [averageRatings.movieID == counts.movieID]
 
-    averagesAndCounts = averageRatings.join(averageRatings, "movieID")
+    averagesAndCounts = averageRatings.join(counts, "movieID")
 
     # Pull the top 10 results
 
