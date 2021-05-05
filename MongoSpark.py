@@ -23,13 +23,13 @@ if __name__ == "__main__":
     usersDataset.write \
         .format("com.mongodb.spark.sql.DefaultSource") \
         .mode('append') \
-        .options("uri", "mongodb://127.0.0.1/movielens.users") \
+        .option("uri", "mongodb://127.0.0.1/movielens.users") \
         .save()
 
     # Read it back from MongoDB into a new Dataframe
     readUsers = spark.read \
         .format("com.mongodb.spark.sql.DefaultSource") \
-        .options("uri", "mongodb://127.0.0.1/movielens.users") \
+        .option("uri", "mongodb://127.0.0.1/movielens.users") \
         .load()
 
     readUsers.createOrReplaceTempView("users")
